@@ -1,0 +1,9 @@
+from urllib.request import urlopen
+import re
+url = "https://bazaar.abuse.ch/browse/"
+page = urlopen(url)
+html_bytes = page.read()
+html = html_bytes.decode("utf-8")
+x = re.findall("[A-Fa-f0-9]{64}", html)
+unique_shas = set(x)
+print(unique_shas)
